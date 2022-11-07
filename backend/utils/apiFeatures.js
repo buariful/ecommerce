@@ -32,11 +32,11 @@ module.exports = class ApiFeatures {
 
     pagination(resultPerPage) {
         const currentPage = Number(this.queryStr.page)
-        console.log(currentPage)
+
         const skip = (resultPerPage * currentPage) - resultPerPage;
         // const skip = resultPerPage * (currentPage - 1)
 
-        this.query = this.query.limit(resultPerPage).skip(skip);
+        this.query = this.query.limit(resultPerPage).skip(skip); // limit("koyta result dekhabe")  skip("koyta skip kortbe")
 
 
         return this;

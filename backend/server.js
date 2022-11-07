@@ -16,6 +16,7 @@ dotenv.config({ path: "backend/config/config.env" })
 
 // connecting to database
 connectDatabase();
+
 app.get('/', (req, res) => {
     res.status(200).send("Ecommerce server is running")
 })
