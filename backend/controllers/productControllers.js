@@ -102,8 +102,9 @@ exports.createProductReviews = catchAsyncError(async (req, res, next) => {
 
     const product = await Product.findById(productId);
     const isReviewed = product.reviews.find((rev) => {
-        rev.user.toString() === req.user._id.toString();
+        return rev.user.toString() === req.user._id.toString();
     })
+
 
     if (isReviewed) {
         product.reviews.forEach((rev) => {
@@ -118,9 +119,11 @@ exports.createProductReviews = catchAsyncError(async (req, res, next) => {
     }
 
     let avgRating = 0;
-    product.ratings = product.reviews.forEach((rev) => {
+    product.reviews.forEach((rev) => {
         avgRating += rev.rating;
-    }) / product.reviews.length;
+    });
+
+    product.ratings = avgRating / product.reviews.length;
 
     await product.save({ validateBeforeSave: false });
 
