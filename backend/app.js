@@ -10,13 +10,16 @@ app.use(express.json())
 const product = require('./routes/productRoute')
 const user = require('./routes/userRoutes')
 
-// error middleware
-app.use(errorMiddleware)
-app.use(cookieParser())
 
+// middleware for cookie parser
+app.use(cookieParser())
 
 app.use("/api/v1", product)
 app.use("/api/v1", user)
+
+// error middleware
+app.use(errorMiddleware);
+
 
 
 module.exports = app;
