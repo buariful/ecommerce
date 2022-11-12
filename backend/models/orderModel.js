@@ -26,19 +26,19 @@ const orderSchema = new mongoose.Schema({
     paymentInfo: {
         id: { type: String, required: true },
         status: { type: String, required: true },
-        paidAt: { type: Date, required: true },
-        itemsPrice: { type: Number, default: 0 },
-        taxPrice: { type: Number, default: 0 },
-        shippingPrice: { type: Number, default: 0 },
-        totalPrice: { type: Number, default: 0 },
-        orderStatus: {
+    },
+    paidAt: { type: Date, required: true },
+    itemsPrice: { type: Number, default: 0 },
+    taxPrice: { type: Number, default: 0 },
+    shippingPrice: { type: Number, default: 0 },
+    totalPrice: { type: Number, default: 0 },        
+    orderStatus: {
             type: String,
             required: true,
             default: "Processing",
         },
-        deliveredAt: Date,
-        createdAt: { type: Date, default: Date.now }
-    }
+    deliveredAt: Date,
+    createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Order", orderSchema);

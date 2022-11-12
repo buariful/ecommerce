@@ -20,6 +20,7 @@ router.route('/admin/product/:id')
 router.route('/product/:id')
     .get(getProductDetails)
 
+    // Product review
 router.route('/review')
     .put(isAuthenticated, createProductReviews);
 

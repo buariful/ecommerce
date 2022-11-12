@@ -56,6 +56,7 @@ exports.updateProduct = catchAsyncError(
             })
         }
         else {
+            console.log(product);
             product = await Product.findByIdAndUpdate(req.params.id, req.body, {
                 new: true,
                 runValidators: true,
