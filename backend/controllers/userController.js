@@ -31,7 +31,6 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
     }
 
     const targetedUser = await User.findOne({ email }).select('+password');
-    console.log(targetedUser);
 
     if (!targetedUser) {
         return next(new ErrorHandler("Invalid email or password", 401))
@@ -138,7 +137,7 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id).select('+password');
 
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
-    console.log(isPasswordMatched)
+
     if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid email or password", 401))
     }
@@ -215,7 +214,7 @@ exports.updateUserRole = catchAsyncError(async (req, res, next) => {
 // delete user --admin
 exports.deleteUser = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.params.id);
-    console.log("user")
+    
     if (!user) {
         return next(new ErrorHandler(`user does not exist with id: ${req.params.id}`, 400))
     }
