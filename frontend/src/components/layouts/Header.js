@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../images/logo.png";
+import Logo from "../../images/logo.png";
 import { CgProfile, CgMenuLeftAlt, CgCloseR } from "react-icons/cg";
 
 const Header = () => {
   const [mblNavOpen, setMblNavOpen] = useState(false);
+
   return (
-    <div className="bg-[#06AED5]">
+    <div className="bg-[#0998b9] sticky top-0 z-10">
       {/* ============= mobile navbar ============= */}
       <div className="md:hidden">
-        <div className="w-11/12 mx-auto py-3 flex justify-between items-center">
+        <div className="w-11/12 mx-auto flex justify-between items-center">
           {mblNavOpen ? (
             <CgCloseR
               className="text-white text-2xl cursor-pointer"
@@ -21,7 +22,9 @@ const Header = () => {
               onClick={() => setMblNavOpen(true)}
             ></CgMenuLeftAlt>
           )}
-
+          <Link to="/home">
+            <img src={Logo} alt="logo" className="w-12" />
+          </Link>
           <CgProfile className="text-white text-2xl cursor-pointer"></CgProfile>
         </div>
 
@@ -32,24 +35,28 @@ const Header = () => {
             <Link
               to="/home"
               className="py-1 px-3 rounded-lg hover:bg-[#e70e80de]"
+              onClick={() => setMblNavOpen(false)}
             >
               Home
             </Link>
             <Link
               to="/product"
               className="py-1 px-3 rounded-lg hover:bg-[#e70e80de]"
+              onClick={() => setMblNavOpen(false)}
             >
               Product
             </Link>
             <Link
               to="/about"
               className="py-1 px-3 rounded-lg hover:bg-[#e70e80de]"
+              onClick={() => setMblNavOpen(false)}
             >
               About
             </Link>
             <Link
               to="/login"
               className="py-1 px-3 rounded-lg hover:bg-[#e70e80de]"
+              onClick={() => setMblNavOpen(false)}
             >
               Log/Reg
             </Link>
@@ -86,19 +93,21 @@ const Header = () => {
       {/* ============= desktop navbar ============== */}
       <div className="hidden md:block">
         <div className="w-10/12 mx-auto flex items-center justify-between">
-          <img src={Logo} alt="logo" className="w-24" />
+          <Link to="/home">
+            <img src={Logo} alt="logo" className="w-16" />
+          </Link>
 
           <div className="flex justify-between items-center basis-1/4 text-white font-medium">
-            <Link to="/home" className="block py-9 px-1 mx-2">
+            <Link to="/home" className="block py-5 px-1 mx-2">
               Home
             </Link>
-            <Link to="/product" className="block py-9 px-1 mx-2">
+            <Link to="/product" className="block py-5 px-1 mx-2">
               Product
             </Link>
-            <Link to="/about" className="block py-9 px-1 mx-2">
+            <Link to="/about" className="block py-5 px-1 mx-2">
               About
             </Link>
-            <Link to="/login" className="block py-9 px-1 mx-2">
+            <Link to="/login" className="block py-5 px-1 mx-2">
               Log/Reg
             </Link>
           </div>
