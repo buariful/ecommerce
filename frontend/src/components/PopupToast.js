@@ -15,7 +15,7 @@ export const ToastError = (text) => {
       </span>
     ),
     {
-      duration: 5000,
+      duration: 2000,
       style: {
         background: "#c10202",
         color: "white",

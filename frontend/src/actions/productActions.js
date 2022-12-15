@@ -3,6 +3,7 @@ import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
+  CLEAR_ERRORS,
   PRODUCT_DETAIL_FAIL,
   PRODUCT_DETAIL_REQUEST,
   PRODUCT_DETAIL_SUCCESS,
@@ -46,5 +47,5 @@ export const getProductDetails = (id) => async (dispatch) => {
 };
 
 export const clearError = () => async (dispatch) => {
-  dispatch({ type: clearError });
+  dispatch({ type: CLEAR_ERRORS });
 };
